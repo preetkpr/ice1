@@ -32,10 +32,32 @@ public class CardTrick {
            System.out.println(c.getSuit() + " " + c.getValue());
         }
         
+       
+        Card luckyCard = new Card();
+        luckyCard.setValue(2);
+        luckyCard.setSuit("Clubs");
+
+        // Check if lucky card is in the magic hand
+        boolean found = false;
+        for (Card c : magicHand) {
+            if (c.getValue() == luckyCard.getValue() && c.getSuit().equals(luckyCard.getSuit())) {
+                found = true;
+                break;
+            }
+        }
+
+     
+        System.out.println("Lucky Card: " + luckyCard.getValue() + " of " + luckyCard.getSuit());
+        if (found) {
+            System.out.println("Congratulations! The lucky card is in the magic hand. You win!");
+        } else {
+            System.out.println("Sorry! The lucky card is not in the magic hand. Better luck next time.");
+        }
+    }
+}
+        
         //insert code to ask the user for Card value and suit, create their card
         // and search magicHand here
         //Then report the result here
         // add one luckcard hard code 2,clubs
-    }
-    
-}
+ 
