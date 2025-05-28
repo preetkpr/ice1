@@ -34,29 +34,41 @@ public class CardTrick {
         }
         
        
+       
         Card luckyCard = new Card();
         luckyCard.setValue(2);
         luckyCard.setSuit("Clubs");
 
-        // Check if lucky card is in the magic hand
+       
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a card value (1–13): ");
+        int userValue = input.nextInt();
+
+        System.out.print("Enter a suit (0–3 where 0=Hearts, 1=Diamonds, 2=Clubs, 3=Spades): ");
+        int suitIndex = input.nextInt();
+        String userSuit = Card.SUITS[suitIndex];
+
+       
+        Card userCard = new Card();
+        userCard.setValue(userValue);
+        userCard.setSuit(userSuit);
+
+
         boolean found = false;
         for (Card c : magicHand) {
-            if (c.getValue() == luckyCard.getValue() && c.getSuit().equals(luckyCard.getSuit())) {
+            if (c.getValue() == userCard.getValue() && c.getSuit().equals(userCard.getSuit())) {
                 found = true;
                 break;
             }
         }
 
-     
-        System.out.println("Lucky Card: " + luckyCard.getValue() + " of " + luckyCard.getSuit());
         if (found) {
-            System.out.println("Congratulations! The lucky card is in the magic hand. You win!");
+            System.out.println("Congratulations! Your card is in the magic hand.");
         } else {
-            System.out.println("Sorry! The lucky card is not in the magic hand. Better luck next time.");
+            System.out.println("Sorry, your card is not in the magic hand.");
         }
     }
 }
-        
         //insert code to ask the user for Card value and suit, create their card
         // and search magicHand here
         //Then report the result here
